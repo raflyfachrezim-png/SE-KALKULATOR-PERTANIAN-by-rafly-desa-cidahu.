@@ -1,65 +1,40 @@
 <!DOCTYPE html>
-<html>
-<head>
-<title>Kalkulator SE 2026</title>
-</head>
-<body>
-
-<h1>Kalkulator SE 2026</h1>
-
-</body>
-</html>
-<!DOCTYPE html>
 <html lang="id">
 <head>
-<select id="komoditas">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-</select>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kalkulator SE 2026</title>
 
-<title>Kalkulator SE 2026</title>
-
-<link rel="stylesheet" href="style.css">
-
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <div class="container">
 
-<h1>Kalkulator Pertanian</h1>
+  <h1>Kalkulator Pertanian</h1>
 
-<label>Komoditas</label>
+  <label>Komoditas</label>
+  <select id="komoditas">
+    <option value="padi">Padi</option>
+    <option value="sawi">Sawi</option>
+    <option value="jagung">Jagung</option>
+  </select>
 
-<select id="komoditas">
+  <label>Luas Lahan (m²)</label>
+  <input type="number" id="luas" placeholder="Masukkan luas lahan">
 
-<option>Padi</option>
-<option>Sawi</option>
-<option>Jagung</option>
+  <button id="hitung">Hitung</button>
 
-</select>
+  <hr>
 
-<label>Luas Lahan (m²)</label>
+  <h2>Hasil</h2>
 
-<input
-type="number"
-id="luas"
-placeholder="Masukkan luas lahan">
-
-<button>Hitung</button>
-
-<hr>
-
-<h2>Hasil</h2>
-
-<p>Produksi : <span id="produksi">0</span></p>
-
-<p>Biaya Produksi : <span id="biaya">0</span></p>
-
-<p>Pendapatan : <span id="pendapatan">0</span></p>
-
-<p>Laba : <span id="laba">0</span></p>
+  <p>Produksi : <span id="produksi">0</span></p>
+  <p>Biaya Produksi : <span id="biaya">0</span></p>
+  <p>Pendapatan : <span id="pendapatan">0</span></p>
+  <p>Laba : <span id="laba">0</span></p>
 
 </div>
 
