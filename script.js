@@ -1,38 +1,42 @@
-document.getElementById("hitung").addEventListener("click", function () {
+function formatRupiah(angka) {
+  return "Rp" + angka.toLocaleString("id-ID");
+}
 
+function hitung() {
+  const luasInput = parseFloat(document.getElementById("luas").value);
   const komoditas = document.getElementById("komoditas").value;
-  const luas = Number(document.getElementById("luas").value);
 
-  if (isNaN(luas) || luas <= 0) {
-    alert("Luas lahan tidak valid!");
+  if (!luasInput || luasInput <= 0) {
+    alert("Isi luas lahan dulu!");
     return;
   }
 
-  const data = database.find(item => item.nama === komoditas);
+  const data = database[komoditas];
 
-  if (!data) {
-    alert("Komoditas tidak ditemukan!");
-    return;
-  }
+  const faktor = luasInput / data.luasPatokan;
 
-  // scaling
-  const faktor = luas / 1000;
+  const upah = data.upah * faktor;
+  const produksi = data.produksi * faktor;
+  const operasional = data.operasional * faktor;
+  const nonOperasional = data.nonOperasional * faktor;
 
-  // produksi
-  const produksi = data.hasilPanen * faktor;
+  const totalPengeluaran = upah + produksi + operasional + nonOperasional;
 
-  // biaya total
-  const biaya =
-    (data.upah + data.operasional + data.nonOperasional) * faktor;
+  const hasilPanen = data.hasilPanen * faktor;
+  const pendapatan = hasilPanen * data.harga;
 
-  // pendapatan
-  const pendapatan = produksi * data.harga;
+  const hasilDiv = document.getElementById("hasil");
 
-  const laba = pendapatan - biaya;
-
-  // output aman
-  document.getElementById("produksi").innerText = produksi.toFixed(2);
-  document.getElementById("biaya").innerText = biaya.toLocaleString("id-ID");
-  document.getElementById("pendapatan").innerText = pendapatan.toLocaleString("id-ID");
-  document.getElementById("laba").innerText = laba.toLocaleString("id-ID");
-});
+  hasilDiv.innerHTML = `
+    <h2>HASIL PERHITUNGAN</h2>
+    <p><b>Upah Pekerja:</b> ${formatRupiah(upah)}</p>
+    <p><b>Biaya Produksi:</b> ${formatRupiah(produksi)}</p>
+    <p><b>Biaya Operasional:</b> ${formatRupiah(operasional)}</p>
+    <p><b>Biaya Non Operasional:</b> ${formatRupiah(nonOperasional)}</p>
+    <p><b>Total Pengeluaran:</b> ${formatRupiah(totalPengeluaran)}</p>
+    <hr/>
+    <p><b>Hasil Panen:</b> ${hasilPanen.toFixed(0)} kg</p>
+    <p><b>Harga:</b> ${formatRupiah(data.harga)}</p>
+    <p><b>Pendapatan:</b> ${formatRupiah(pendapatan)}</p>
+  `;
+}
