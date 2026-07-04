@@ -1,5 +1,5 @@
 function formatRupiah(x) {
-  return "Rp " + Math.round(x).toLocaleString("id-ID");
+  return "Rp " + Math.round(x || 0).toLocaleString("id-ID");
 }
 
 function hitung() {
@@ -14,20 +14,26 @@ function hitung() {
   }
 
   const d = database[komoditas];
+
+  if (!d) {
+    hasilDiv.innerHTML = "KOMODITAS ERROR";
+    return;
+  }
+
   const faktor = luas / d.luasPatokan;
 
   // =====================
   // 🌾 PER MUSIM
   // =====================
-  const upah = d.upah * faktor;
-  const produksi = d.produksi * faktor;
-  const operasional = d.operasional * faktor;
-  const nonOp = d.nonOperasional * faktor;
+  const upah = (d.upah || 0) * faktor;
+  const produksi = (d.produksi || 0) * faktor;
+  const operasional = (d.operasional || 0) * faktor;
+  const nonOp = (d.nonOperasional || 0) * faktor;
 
   const totalBiaya = upah + produksi + operasional + nonOp;
 
-  const hasilKg = d.hasilPanen * faktor;
-  const hargaKg = d.harga;
+  const hasilKg = (d.hasilPanen || 0) * faktor;
+  const hargaKg = d.harga || 0;
 
   const pendapatan = hasilKg * hargaKg;
   const profit = pendapatan - totalBiaya;
@@ -35,7 +41,7 @@ function hitung() {
   // =====================
   // 📅 PER TAHUN
   // =====================
-  const panen = d.panenTahun;
+  const panen = d.panenTahun || 1;
 
   const upahTahun = upah * panen;
   const produksiTahun = produksi * panen;
@@ -50,40 +56,34 @@ function hitung() {
   hasilDiv.innerHTML = `
     <h2>HASIL PERHITUNGAN</h2>
 
-    <!-- PER MUSIM -->
     <h3>🌾 PER MUSIM</h3>
-
-    <p><b>Upah Pekerja:</b> ${formatRupiah(upah)}</p>
-    <p><b>Biaya Produksi:</b> ${formatRupiah(produksi)}</p>
-    <p><b>Biaya Operasional:</b> ${formatRupiah(operasional)}</p>
-    <p><b>Biaya Non Operasional:</b> ${formatRupiah(nonOp)}</p>
-
-    <hr>
-
-    <p><b>Hasil Panen:</b> ${hasilKg.toFixed(0)} kg</p>
-    <p><b>Harga / kg:</b> ${formatRupiah(hargaKg)}</p>
-
-    <p><b>Total Biaya:</b> ${formatRupiah(totalBiaya)}</p>
-    <p><b>Pendapatan:</b> ${formatRupiah(pendapatan)}</p>
-    <p><b>Profit:</b> ${formatRupiah(profit)}</p>
+    <p>Upah: ${formatRupiah(upah)}</p>
+    <p>Produksi: ${formatRupiah(produksi)}</p>
+    <p>Operasional: ${formatRupiah(operasional)}</p>
+    <p>Non Ops: ${formatRupiah(nonOp)}</p>
 
     <hr>
 
-    <!-- PER TAHUN -->
+    <p>Hasil: ${hasilKg.toFixed(0)} kg</p>
+    <p>Harga/kg: ${formatRupiah(hargaKg)}</p>
+    <p>Total Biaya: ${formatRupiah(totalBiaya)}</p>
+    <p>Pendapatan: ${formatRupiah(pendapatan)}</p>
+    <p>Profit: ${formatRupiah(profit)}</p>
+
+    <hr>
+
     <h3>📅 PER TAHUN (${panen}x panen)</h3>
-
-    <p><b>Upah Pekerja:</b> ${formatRupiah(upahTahun)}</p>
-    <p><b>Biaya Produksi:</b> ${formatRupiah(produksiTahun)}</p>
-    <p><b>Biaya Operasional:</b> ${formatRupiah(operasionalTahun)}</p>
-    <p><b>Biaya Non Operasional:</b> ${formatRupiah(nonOpTahun)}</p>
+    <p>Upah: ${formatRupiah(upahTahun)}</p>
+    <p>Produksi: ${formatRupiah(produksiTahun)}</p>
+    <p>Operasional: ${formatRupiah(operasionalTahun)}</p>
+    <p>Non Ops: ${formatRupiah(nonOpTahun)}</p>
 
     <hr>
 
-    <p><b>Hasil Panen:</b> ${hasilKgTahun.toFixed(0)} kg</p>
-    <p><b>Harga / kg:</b> ${formatRupiah(hargaKg)}</p>
-
-    <p><b>Total Biaya:</b> ${formatRupiah(totalBiayaTahun)}</p>
-    <p><b>Pendapatan:</b> ${formatRupiah(pendapatanTahun)}</p>
-    <p><b>Profit:</b> ${formatRupiah(profitTahun)}</p>
+    <p>Hasil: ${hasilKgTahun.toFixed(0)} kg</p>
+    <p>Harga/kg: ${formatRupiah(hargaKg)}</p>
+    <p>Total Biaya: ${formatRupiah(totalBiayaTahun)}</p>
+    <p>Pendapatan: ${formatRupiah(pendapatanTahun)}</p>
+    <p>Profit: ${formatRupiah(profitTahun)}</p>
   `;
 }
