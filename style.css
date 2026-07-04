@@ -1,108 +1,92 @@
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: Arial;
   background: #f4fff4;
   color: #1b5e20;
 }
 
-/* CONTAINER */
 .container {
-  padding: 20px;
   max-width: 500px;
   margin: auto;
+  padding: 20px;
 }
 
-/* JUDUL */
 h1 {
   text-align: center;
   font-size: 18px;
-  color: #1b5e20;
-  margin-bottom: 10px;
 }
 
-/* CARD UTAMA */
 .card {
-  background: #ffffff;
+  background: white;
   padding: 15px;
   border-radius: 16px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
   margin-top: 15px;
 }
 
-/* LABEL */
 label {
-  display: block;
-  margin-top: 10px;
   font-weight: bold;
   font-size: 13px;
+  display: block;
+  margin-top: 10px;
 }
 
-/* INPUT & SELECT */
 input, select {
   width: 100%;
   padding: 10px;
   margin-top: 5px;
   border-radius: 10px;
   border: 1px solid #cfe8cf;
-  outline: none;
-  font-size: 14px;
 }
 
-/* FOCUS */
-input:focus, select:focus {
-  border-color: #2e7d32;
-  box-shadow: 0 0 5px rgba(46,125,50,0.2);
-}
-
-/* BUTTON */
 button {
   width: 100%;
-  margin-top: 15px;
   padding: 12px;
-  background: #2e7d32;
-  color: white;
+  margin-top: 15px;
   border: none;
   border-radius: 10px;
-  font-size: 15px;
+  background: #2e7d32;
+  color: white;
   font-weight: bold;
-  cursor: pointer;
 }
 
 button:hover {
   background: #1b5e20;
 }
 
-/* HASIL CARD */
-.hasil {
-  margin-top: 20px;
-}
-
-/* ROW HASIL (2 KOLOM RAPI) */
 .row {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-
-  padding: 12px 10px;
+  padding: 10px;
   margin-bottom: 8px;
-
   background: #f7fff7;
   border-radius: 10px;
-
-  font-size: 14px;
 }
 
-/* LABEL KIRI */
-.row span {
-  color: #444;
+.summary {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
 }
 
-/* NILAI KANAN */
-.row b {
-  color: #1b5e20;
+.box {
+  background: #fff;
+  padding: 10px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.06);
 }
 
-/* PEMISAH */
+.box h3 {
+  font-size: 12px;
+  margin: 0;
+}
+
+.box p {
+  font-weight: bold;
+  margin: 5px 0 0;
+}
+
 hr {
   border: none;
   height: 1px;
@@ -110,53 +94,9 @@ hr {
   margin: 15px 0;
 }
 
-/* WATERMARK */
 .watermark {
   text-align: center;
   font-size: 11px;
   color: gray;
   margin: 20px 0;
-  opacity: 0.7;
-}
-
-/* RESPONSIVE HP */
-@media (max-width: 480px) {
-  h1 {
-    font-size: 16px;
-  }
-
-  .card {
-    padding: 12px;
-  }
-
-  .row {
-    font-size: 13px;
-  }
-}
-.summary {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  margin-top: 15px;
-}
-
-.box {
-  background: white;
-  padding: 12px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  text-align: center;
-}
-
-.box h3 {
-  margin: 0;
-  font-size: 12px;
-  color: #666;
-}
-
-.box p {
-  margin: 5px 0 0;
-  font-size: 16px;
-  font-weight: bold;
-  color: #1b5e20;
 }
