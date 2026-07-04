@@ -5,63 +5,79 @@ body {
   color: #1b5e20;
 }
 
+/* CONTAINER */
 .container {
   padding: 20px;
   max-width: 500px;
   margin: auto;
 }
 
+/* JUDUL */
 h1 {
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
   color: #1b5e20;
+  margin-bottom: 10px;
 }
 
+/* CARD UTAMA */
 .card {
-  background: white;
+  background: #ffffff;
   padding: 15px;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
   margin-top: 15px;
 }
 
+/* LABEL */
 label {
   display: block;
   margin-top: 10px;
   font-weight: bold;
+  font-size: 13px;
 }
 
+/* INPUT & SELECT */
 input, select {
   width: 100%;
   padding: 10px;
   margin-top: 5px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
+  border-radius: 10px;
+  border: 1px solid #cfe8cf;
+  outline: none;
+  font-size: 14px;
 }
 
+/* FOCUS */
+input:focus, select:focus {
+  border-color: #2e7d32;
+  box-shadow: 0 0 5px rgba(46,125,50,0.2);
+}
+
+/* BUTTON */
 button {
   width: 100%;
   margin-top: 15px;
-  padding: 10px;
+  padding: 12px;
   background: #2e7d32;
   color: white;
   border: none;
-  border-radius: 8px;
-  font-size: 16px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 button:hover {
   background: #1b5e20;
 }
 
-.hasil p {
-  margin: 5px 0;
+/* HASIL CARD */
+.hasil {
+  margin-top: 20px;
 }
 
-.watermark {
-  text-align: center;
-  font-size: 12px;
-  color: gray;
+/* ROW HASIL (2 KOLOM RAPI) */
 .row {
   display: flex;
   justify-content: space-between;
@@ -70,19 +86,50 @@ button:hover {
   padding: 12px 10px;
   margin-bottom: 8px;
 
-  background: #f8fff8;
+  background: #f7fff7;
   border-radius: 10px;
 
   font-size: 14px;
 }
+
+/* LABEL KIRI */
+.row span {
+  color: #444;
+}
+
+/* NILAI KANAN */
+.row b {
+  color: #1b5e20;
+}
+
+/* PEMISAH */
 hr {
   border: none;
   height: 1px;
   background: #d7ead7;
   margin: 15px 0;
 }
-.hasil {
-  margin-top: 20px;
-  padding: 15px;
-  border-radius: 15px;
+
+/* WATERMARK */
+.watermark {
+  text-align: center;
+  font-size: 11px;
+  color: gray;
+  margin: 20px 0;
+  opacity: 0.7;
+}
+
+/* RESPONSIVE HP */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 16px;
+  }
+
+  .card {
+    padding: 12px;
+  }
+
+  .row {
+    font-size: 13px;
+  }
 }
