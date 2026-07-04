@@ -16,7 +16,9 @@ function hitung() {
   const d = database[komoditas];
   const faktor = luas / d.luasPatokan;
 
-  // 🌾 MUSIM
+  // =====================
+  // 🌾 PER MUSIM
+  // =====================
   const upah = d.upah * faktor;
   const produksi = d.produksi * faktor;
   const operasional = d.operasional * faktor;
@@ -28,53 +30,60 @@ function hitung() {
   const harga = d.harga;
 
   const pendapatan = hasilKg * harga;
-  const profit = pendapatan - biaya;
 
-  // 📅 TAHUN
+  // =====================
+  // 📅 PER TAHUN
+  // =====================
   const panen = d.panenTahun || 1;
 
   const pendapatanTahun = pendapatan * panen;
   const biayaTahun = biaya * panen;
-  const profitTahun = profit * panen;
 
   hasilDiv.innerHTML = `
 
-    <!-- 🔥 BOX PENDAPATAN MUSIM -->
-    <div class="box box-green">
-      <div class="title">🌾 Pendapatan Per Musim</div>
-      <div class="row"><span>Pendapatan</span><b>${formatRupiah(pendapatan)}</b></div>
-      <div class="row"><span>Biaya</span><b>${formatRupiah(biaya)}</b></div>
-      <div class="row"><span>Profit</span><b>${formatRupiah(profit)}</b></div>
+    <!-- 🔥 2 KOLOM PENDAPATAN -->
+    <div class="grid-2">
+
+      <div class="box green">
+        <div class="title">🌾 Pendapatan Per Musim</div>
+        <div class="row"><span>Total Pendapatan</span><b>${formatRupiah(pendapatan)}</b></div>
+      </div>
+
+      <div class="box blue">
+        <div class="title">📅 Pendapatan Per Tahun (${panen}x Panen)</div>
+        <div class="row"><span>Total Pendapatan</span><b>${formatRupiah(pendapatanTahun)}</b></div>
+      </div>
+
     </div>
 
-    <!-- 🔥 BOX PENDAPATAN TAHUN -->
-    <div class="box box-blue">
-      <div class="title">📅 Pendapatan Per Tahun (${panen}x)</div>
-      <div class="row"><span>Pendapatan</span><b>${formatRupiah(pendapatanTahun)}</b></div>
-      <div class="row"><span>Biaya</span><b>${formatRupiah(biayaTahun)}</b></div>
-      <div class="row"><span>Profit</span><b>${formatRupiah(profitTahun)}</b></div>
+    <!-- 🌾 DETAIL MUSIM -->
+    <div class="box" style="margin-top:15px;">
+      <div class="title">🌾 Rincian Biaya & Produksi Per Musim</div>
+
+      <div class="row"><span>Upah Pekerja</span><b>${formatRupiah(upah)}</b></div>
+      <div class="row"><span>Biaya Produksi</span><b>${formatRupiah(produksi)}</b></div>
+      <div class="row"><span>Biaya Operasional</span><b>${formatRupiah(operasional)}</b></div>
+      <div class="row"><span>Biaya Non Operasional</span><b>${formatRupiah(nonOp)}</b></div>
+
+      <div class="row"><span>Hasil Panen</span><b>${hasilKg.toFixed(0)} kg</b></div>
+      <div class="row"><span>Harga Jual per Kg</span><b>${formatRupiah(harga)}</b></div>
+
+      <div class="row"><span>Total Biaya Produksi</span><b>${formatRupiah(biaya)}</b></div>
     </div>
 
-    <!-- 🔥 RINCIAN -->
-    <div class="box">
-      <div class="title">📊 Rincian Per Musim</div>
-      <div class="row"><span>Upah</span><b>${formatRupiah(upah)}</b></div>
-      <div class="row"><span>Produksi</span><b>${formatRupiah(produksi)}</b></div>
-      <div class="row"><span>Operasional</span><b>${formatRupiah(operasional)}</b></div>
-      <div class="row"><span>Non Ops</span><b>${formatRupiah(nonOp)}</b></div>
-      <div class="row"><span>Hasil</span><b>${hasilKg.toFixed(0)} kg</b></div>
-      <div class="row"><span>Harga/kg</span><b>${formatRupiah(harga)}</b></div>
-    </div>
+    <!-- 📅 DETAIL TAHUN -->
+    <div class="box" style="margin-top:10px;">
+      <div class="title">📅 Rincian Biaya & Produksi Per Tahun</div>
 
-    <!-- 🔥 RINCIAN TAHUN -->
-    <div class="box">
-      <div class="title">📊 Rincian Per Tahun</div>
-      <div class="row"><span>Upah</span><b>${formatRupiah(upah * panen)}</b></div>
-      <div class="row"><span>Produksi</span><b>${formatRupiah(produksi * panen)}</b></div>
-      <div class="row"><span>Operasional</span><b>${formatRupiah(operasional * panen)}</b></div>
-      <div class="row"><span>Non Ops</span><b>${formatRupiah(nonOp * panen)}</b></div>
-      <div class="row"><span>Hasil</span><b>${(hasilKg * panen).toFixed(0)} kg</b></div>
-      <div class="row"><span>Harga/kg</span><b>${formatRupiah(harga)}</b></div>
+      <div class="row"><span>Upah Pekerja (Total Tahunan)</span><b>${formatRupiah(upah * panen)}</b></div>
+      <div class="row"><span>Biaya Produksi (Total Tahunan)</span><b>${formatRupiah(produksi * panen)}</b></div>
+      <div class="row"><span>Biaya Operasional (Total Tahunan)</span><b>${formatRupiah(operasional * panen)}</b></div>
+      <div class="row"><span>Biaya Non Operasional (Total Tahunan)</span><b>${formatRupiah(nonOp * panen)}</b></div>
+
+      <div class="row"><span>Total Hasil Panen</span><b>${(hasilKg * panen).toFixed(0)} kg</b></div>
+      <div class="row"><span>Harga Jual per Kg</span><b>${formatRupiah(harga)}</b></div>
+
+      <div class="row"><span>Total Biaya Produksi Tahunan</span><b>${formatRupiah(biayaTahun)}</b></div>
     </div>
 
   `;
