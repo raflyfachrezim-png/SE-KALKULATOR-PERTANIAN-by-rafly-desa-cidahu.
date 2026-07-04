@@ -1,59 +1,30 @@
-const selectKomoditas = document.getElementById("komoditas");
-const inputLuas = document.getElementById("luas");
+document.getElementById("hitung").addEventListener("click", function () {
 
-const produksi = document.getElementById("produksi");
-const biaya = document.getElementById("biaya");
-const pendapatan = document.getElementById("pendapatan");
-const laba = document.getElementById("laba");
+  const komoditas = document.getElementById("komoditas").value;
+  const luas = Number(document.getElementById("luas").value);
 
-// Isi dropdown otomatis
-database.forEach(item => {
+  const data = database.find(item => item.nama === komoditas);
 
-    let option = document.createElement("option");
+  if (!data) {
+    alert("Komoditas tidak ditemukan!");
+    return;
+  }
 
-    option.value = item.nama;
+  if (isNaN(luas) || luas <= 0) {
+    alert("Luas lahan tidak valid!");
+    return;
+  }
 
-    option.textContent = item.nama;
+  // scaling dari 1000m² (patokan database kamu)
+  const faktor = luas / 1000;
 
-    selectKomoditas.appendChild(option);
+  const produksi = data.hasilPanen * faktor;
+  const biaya = (data.produksi + data.operasional + data.nonOperasional) * faktor;
+  const pendapatan = produksi * data.harga;
+  const laba = pendapatan - biaya;
 
+  document.getElementById("produksi").innerText = produksi.toFixed(2);
+  document.getElementById("biaya").innerText = biaya.toLocaleString("id-ID");
+  document.getElementById("pendapatan").innerText = pendapatan.toLocaleString("id-ID");
+  document.getElementById("laba").innerText = laba.toLocaleString("id-ID");
 });
-
-function hitung(){
-
-    let data = database.find(item => item.nama === selectKomoditas.value);
-
-    let faktor = Number(inputLuas.value) / data.luasPatokan;
-
-    let hasilPanen = data.hasilPanen * faktor;
-
-    let totalBiaya =
-        (data.biayaProduksi +
-        data.biayaOperasional +
-        data.biayaNonOperasional) * faktor;
-
-    let totalPendapatan =
-        hasilPanen * data.harga;
-
-    let totalLaba =
-        totalPendapatan - totalBiaya;
-
-    produksi.innerHTML =
-        hasilPanen.toFixed(0) + " Kg";
-
-    biaya.innerHTML =
-        "Rp " + totalBiaya.toLocaleString("id-ID");
-
-    pendapatan.innerHTML =
-        "Rp " + totalPendapatan.toLocaleString("id-ID");
-
-    laba.innerHTML =
-        "Rp " + totalLaba.toLocaleString("id-ID");
-
-}
-
-inputLuas.addEventListener("input", hitung);
-
-selectKomoditas.addEventListener("change", hitung);
-
-hitung();
