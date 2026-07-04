@@ -28,15 +28,20 @@ function hitung() {
   const hasilDiv = document.getElementById("hasil");
 
   hasilDiv.innerHTML = `
-    <h2>HASIL PERHITUNGAN</h2>
-    <p><b>Upah Pekerja:</b> ${formatRupiah(upah)}</p>
-    <p><b>Biaya Produksi:</b> ${formatRupiah(produksi)}</p>
-    <p><b>Biaya Operasional:</b> ${formatRupiah(operasional)}</p>
-    <p><b>Biaya Non Operasional:</b> ${formatRupiah(nonOperasional)}</p>
-    <p><b>Total Pengeluaran:</b> ${formatRupiah(totalPengeluaran)}</p>
-    <hr/>
-    <p><b>Hasil Panen:</b> ${hasilPanen.toFixed(0)} kg</p>
-    <p><b>Harga:</b> ${formatRupiah(data.harga)}</p>
-    <p><b>Pendapatan:</b> ${formatRupiah(pendapatan)}</p>
-  `;
-}
+  <h2>HASIL PERHITUNGAN</h2>
+
+  <div class="row"><span>Upah Pekerja</span><b>${formatRupiah(upah)}</b></div>
+  <div class="row"><span>Biaya Produksi</span><b>${formatRupiah(produksi)}</b></div>
+  <div class="row"><span>Biaya Operasional</span><b>${formatRupiah(operasional)}</b></div>
+  <div class="row"><span>Biaya Non Operasional</span><b>${formatRupiah(nonOperasional)}</b></div>
+
+  <hr/>
+
+  <div class="row"><span>Total Pengeluaran</span><b>${formatRupiah(totalPengeluaran)}</b></div>
+
+  <hr/>
+
+  <div class="row"><span>Hasil Panen</span><b>${hasilPanen.toFixed(0)} kg</b></div>
+  <div class="row"><span>Harga</span><b>${formatRupiah(data.harga)}</b></div>
+  <div class="row"><span>Pendapatan</span><b>${formatRupiah(pendapatan)}</b></div>
+`;
