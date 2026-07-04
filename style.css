@@ -1,14 +1,14 @@
 body {
-  margin: 0;
   font-family: Arial;
-  background: #f4fff4;
+  background: #f3fff3;
+  margin: 0;
   color: #1b5e20;
 }
 
 .container {
   max-width: 500px;
   margin: auto;
-  padding: 20px;
+  padding: 15px;
 }
 
 h1 {
@@ -19,84 +19,67 @@ h1 {
 .card {
   background: white;
   padding: 15px;
-  border-radius: 16px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-  margin-top: 15px;
-}
-
-label {
-  font-weight: bold;
-  font-size: 13px;
-  display: block;
+  border-radius: 12px;
   margin-top: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
 input, select {
   width: 100%;
   padding: 10px;
   margin-top: 5px;
-  border-radius: 10px;
-  border: 1px solid #cfe8cf;
+  margin-bottom: 10px;
 }
 
 button {
   width: 100%;
   padding: 12px;
-  margin-top: 15px;
-  border: none;
-  border-radius: 10px;
   background: #2e7d32;
   color: white;
-  font-weight: bold;
+  border: none;
+  border-radius: 10px;
 }
 
-button:hover {
-  background: #1b5e20;
+/* 🔥 HASIL CONTAINER */
+.hasil-container {
+  margin-top: 15px;
+}
+
+/* 🔥 BOX UTAMA */
+.box {
+  background: white;
+  padding: 15px;
+  border-radius: 12px;
+  margin-top: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* 🔥 KOTAK PENDAPATAN */
+.box-green {
+  background: #e8f5e9;
+  border-left: 5px solid #2e7d32;
+}
+
+.box-blue {
+  background: #e3f2fd;
+  border-left: 5px solid #1565c0;
+}
+
+.title {
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
 .row {
   display: flex;
   justify-content: space-between;
-  padding: 10px;
-  margin-bottom: 8px;
-  background: #f7fff7;
-  border-radius: 10px;
-}
-
-.summary {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-}
-
-.box {
-  background: #fff;
-  padding: 10px;
-  border-radius: 12px;
-  text-align: center;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.06);
-}
-
-.box h3 {
-  font-size: 12px;
-  margin: 0;
-}
-
-.box p {
-  font-weight: bold;
-  margin: 5px 0 0;
-}
-
-hr {
-  border: none;
-  height: 1px;
-  background: #d7ead7;
-  margin: 15px 0;
+  padding: 5px 0;
+  border-bottom: 1px solid #eee;
 }
 
 .watermark {
   text-align: center;
-  font-size: 11px;
+  font-size: 12px;
   color: gray;
-  margin: 20px 0;
+  margin: 20px;
 }
