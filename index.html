@@ -9,3 +9,60 @@
 
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Kalkulator SE 2026</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Kalkulator Pertanian</h1>
+
+<label>Komoditas</label>
+
+<select id="komoditas">
+
+<option>Padi</option>
+<option>Sawi</option>
+<option>Jagung</option>
+
+</select>
+
+<label>Luas Lahan (m²)</label>
+
+<input
+type="number"
+id="luas"
+placeholder="Masukkan luas lahan">
+
+<button>Hitung</button>
+
+<hr>
+
+<h2>Hasil</h2>
+
+<p>Produksi : <span id="produksi">0</span></p>
+
+<p>Biaya Produksi : <span id="biaya">0</span></p>
+
+<p>Pendapatan : <span id="pendapatan">0</span></p>
+
+<p>Laba : <span id="laba">0</span></p>
+
+</div>
+
+<script src="database.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
